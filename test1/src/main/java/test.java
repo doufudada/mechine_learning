@@ -12,10 +12,11 @@ public class test {
         PreparedStatement outgrade = connection.prepareStatement("select name,avggrade from newstudent ");
         ResultSet rsGrade=outgrade.executeQuery();
         while (rsGrade.next()){
-            if (rsGrade.getString("avggrade")!=null){
+            if (rsGrade.getInt("avggrade")!=0){
                 System.out.println("在北京的"+rsGrade.getString("Name")+"同学的平均成绩是"+rsGrade.getString("avggrade"));
             }
         }
+        System.out.println("=========================================");
         rsGrade.close();
 //
         //统计学生中家乡在广州，课程1在80分以上，且课程10在9分以上的男同学的数量。
@@ -28,6 +29,7 @@ public class test {
             }
         }
         System.out.println("学生中家乡在广州，课程1在80分以上，且课程10在9分以上的男同学的数量为"+count+"个");
+        System.out.println("=========================================");
         rscount.close();
 
 //        比较广州和上海两地女生的平均体能测试成绩，哪个地区的更强些？
@@ -57,6 +59,7 @@ public class test {
         if (Guangzhou_grade/Guangzhou_count>Shanghai_grade/Shanghai_count) System.out.println("广州女生的平均体能测试成绩更好");
         if (Guangzhou_grade/Guangzhou_count==Shanghai_grade/Shanghai_count) System.out.println("两地女生的平均体能测试成绩一样好");
         if (Guangzhou_grade/Guangzhou_count<Shanghai_grade/Shanghai_count) System.out.println("上海女生的平均体能测试成绩更好");
+        System.out.println("=========================================");
         rsCompare.close();
 
         //计算general均值和标准差
